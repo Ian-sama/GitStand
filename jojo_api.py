@@ -1,23 +1,35 @@
 import requests
+import random
 
-# URL for the JoJo API (getting a list of characters)
-url = "https://jojos-api.vercel.app/"
+# Base URL for the JoJo API
+base_url = "https://stand-by-me.herokuapp.com/api/v1/"
 
-# Make a request to the API
-response = requests.get(url)
+# Function to get all characters
+def get_all_characters():
+    response = requests.get(f"{base_url}characters")
+    if response.status_code == 200:
+        return response.json()
+    else:
+        print(f"Error fetching characters: {response.status_code}")
+        return None
 
-# Check the status code of the response
-print(f"Status Code: {response.status_code}")
+# Function to get all stands
+def get_all_stands():
+    response = requests.get(f"{base_url}stands")
+    if response.status_code == 200:
+        return response.json()
+    else:
+        print(f"Error fetching stands: {response.status_code}")
+        return None
 
-# Print the raw response content
-print(f"Response Text: {response.text}")
+# Fetch characters and pick one randomly
+characters = get_all_characters()
+if characters:
+    random_character = random.choice(characters)
+    print("Random Character:", random_character)
 
-# Only try to parse the response if it was successful (status code 200)
-if response.status_code == 200:
-    try:
-        data = response.json()  # Parse the JSON data
-        print(data)  # Print the data
-    except requests.exceptions.JSONDecodeError:
-        print("Error: The response is not valid JSON.")
-else:
-    print(f"Failed to retrieve data. Status code: {response.status_code}")
+# Fetch stands and pick one randomly (if you implement this later)
+# stands = get_all_stands()
+# if stands:
+#     random_stand = random.choice(stands)
+#     print("Random Stand:", random_stand
