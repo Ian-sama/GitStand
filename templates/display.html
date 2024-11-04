@@ -3,12 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Random {{ entry_type }}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
 </head>
 <body>
-    <h1>Random {{ entry_type }}</h1>
-    <img src="{{ 'https://jojos-bizarre-api.netlify.app/assets/' + entry['image'] }}" alt="{{ entry_type }} Image" style="max-width: 300px;">
-    <h2>{{ entry['name'] }}</h2>
-    <p>{{ entry['description'] }}</p>
-    <a href="/">Go Back</a>
+    <div class="container">
+        <h1>Random {{ entry_type }}</h1>
+        <img src="{{ 'https://jojos-bizarre-api.netlify.app/assets/' + entry['image'] }}" alt="{{ entry_type }} Image" style="max-width: 300px;">
+        <h2>{{ entry['name'] }}</h2>
+        <p>{{ entry['description'] }}</p>
+        <a href="/">Go Back</a>
+        <button onclick="window.location.href='/random_stand'">Go Again</button>
+    </div>
 </body>
 </html>
