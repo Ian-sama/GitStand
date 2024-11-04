@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Random {{ entry_type }}</title>
+</head>
+<body>
+    <h1>Random {{ entry_type }}</h1>
+    <img src="{{ 'https://jojos-bizarre-api.netlify.app/assets/' + entry['image'] }}" alt="{{ entry_type }} Image" style="max-width: 300px;">
+    <h2>{{ entry['name'] }}</h2>
+    <p>{{ entry['description'] }}</p>
+    <a href="/">Go Back</a>
+</body>
+</html>
